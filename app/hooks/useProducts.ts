@@ -5,7 +5,7 @@ import { Product } from "../../types/product";
 
 export function useProducts() {
     // We want to store the products here in a state variable
-    
+    const baseUrl = ""; //'http://localhost:8080' // Your docker python backend in the future
     // READ — fetch all products
     //
     // useCallback prevents a new function from being created on every render.
@@ -15,6 +15,9 @@ export function useProducts() {
     // another fetch, another state update, another render — an infinite loop.
     // The empty array [] means the function is only created once (on mount).
     const fetchProducts = useCallback(async () => {
+        const response = fetch(baseUrl+"/api/products", {
+            method: 'GET'
+        })
         // MSW intercepts this URL and returns the in-memory store.
         // When the real backend is ready, replace "/api/products" with
         // your actual API base URL, e.g. "https://api.example.com/products"
