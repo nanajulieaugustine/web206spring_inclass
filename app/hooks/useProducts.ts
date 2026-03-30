@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Product } from "../../types/product";
-import { products } from "../../dummy-data/products";
 
 export function useProducts() {
+    const [products, setProducts] = useState([] as Product[])
     // We want to store the products here in a state variable
     const baseUrl = ""; //'http://localhost:8080' // Your docker python backend in the future
     // READ — fetch all products
