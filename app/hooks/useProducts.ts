@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Product } from "../../types/product";
+import { products } from "../../dummy-data/products";
 
 export function useProducts() {
     // We want to store the products here in a state variable
@@ -18,6 +19,7 @@ export function useProducts() {
         const response = fetch(baseUrl+"/api/products", {
             method: 'GET'
         })
+        console.log(response);
         // MSW intercepts this URL and returns the in-memory store.
         // When the real backend is ready, replace "/api/products" with
         // your actual API base URL, e.g. "https://api.example.com/products"
@@ -63,6 +65,6 @@ export function useProducts() {
         // since we don't read the response body.
     }, []);
 
-    return { }
+    return { products }
 }
 
